@@ -12,6 +12,7 @@ use JeremieMazard\LaravelPatches\Interfaces\PatchRunner;
 class Patch extends Model implements PatchInterface
 {
     public bool $autoplay = true;
+
     protected $fillable = [
         'name',
         'description',
@@ -19,8 +20,9 @@ class Patch extends Model implements PatchInterface
         'ran',
         'run_date',
     ];
+
     protected $casts = [
-        'run_date' => 'datetime'
+        'run_date' => 'datetime',
     ];
 
     /**
@@ -31,6 +33,7 @@ class Patch extends Model implements PatchInterface
     public function run(): bool
     {
         $runner = static::resolvePatchRunner();
+
         return $runner->run();
     }
 
@@ -42,14 +45,14 @@ class Patch extends Model implements PatchInterface
     private function resolvePatchRunner(): PatchRunner
     {
         $namespace = config('patches.namespace', 'App\Patches');
-        $patchName = config('patches.class_prefix', 'Patch') . $this->number;
+        $patchName = config('patches.class_prefix', 'Patch').$this->number;
         $class = "{$namespace}\\{$patchName}";
 
-        if (!class_exists($class)) {
+        if (! class_exists($class)) {
             throw PatchRunnerNotFoundException::create($patchName, $class);
         }
 
-        if (!is_subclass_of($class, PatchRunner::class)) {
+        if (! is_subclass_of($class, PatchRunner::class)) {
             throw PatchMustImplementPatchRunnerException::create($class);
         }
 
@@ -60,6 +63,4 @@ class Patch extends Model implements PatchInterface
     {
         return config('patches.table', 'patches');
     }
-
-
 }

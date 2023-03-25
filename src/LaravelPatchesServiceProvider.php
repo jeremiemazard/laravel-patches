@@ -2,9 +2,9 @@
 
 namespace JeremieMazard\LaravelPatches;
 
+use JeremieMazard\LaravelPatches\Commands\LaravelPatchesCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use JeremieMazard\LaravelPatches\Commands\LaravelPatchesCommand;
 
 class LaravelPatchesServiceProvider extends PackageServiceProvider
 {

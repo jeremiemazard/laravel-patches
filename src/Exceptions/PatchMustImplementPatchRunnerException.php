@@ -25,6 +25,7 @@ class PatchMustImplementPatchRunnerException extends \Exception
     public function setClassName(string $className): self
     {
         $this->className = $className;
+
         return $this;
     }
 }

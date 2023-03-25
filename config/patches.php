@@ -18,5 +18,5 @@ return [
      * With the default prefix of 'Patch', your classes should
      * be named 'Patch{number}' (e.g.: Patch001).
      */
-    'class_prefix' => 'Patch'
+    'class_prefix' => 'Patch',
 ];

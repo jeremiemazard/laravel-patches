@@ -5,6 +5,7 @@ namespace JeremieMazard\LaravelPatches\Exceptions;
 class PatchRunnerNotFoundException extends \Exception
 {
     private string $patchName;
+
     private string $className;
 
     private function __construct(string $message = '')
@@ -27,6 +28,7 @@ class PatchRunnerNotFoundException extends \Exception
     public function setPatchName(string $patchName): self
     {
         $this->patchName = $patchName;
+
         return $this;
     }
 
@@ -38,7 +40,7 @@ class PatchRunnerNotFoundException extends \Exception
     public function setClassName(string $className): self
     {
         $this->className = $className;
+
         return $this;
     }
-
 }
